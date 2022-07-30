@@ -8,108 +8,85 @@
  * @format
  */
 
-import React from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import * as React from 'react';
+import { StyleSheet, Text, View, ImageBackground, Image, TouchableOpacity, Alert } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-const Section: React.FC<{
-  title: string;
-}> = ({children, title}) => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
+export default class App extends React.Component {
 
-const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
+  signupPressed = ()=>{
+    Alert.alert("Completed Sign Up")
+  }
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+  loginPressed = ()=> {
+    Alert.alert("Completed Login!")
+  }
 
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
+  render() {
+    return (
+      <ImageBackground
+        source={require('./images/background.jpeg')}
+        style={styles.background}
+      >
+        <View>
+          <Image
+            source={require('./images/logo.png')}
+            style={styles.logo}
+            resizeMode="contain"
+          >
+          </Image>
+          <TouchableOpacity 
+            onPress={this.signupPressed}
+          >
+            <Text style={styles.signup}>Sign Up</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={this.loginPressed}
+          >
+            <Text style={styles.login}>Log In</Text>
+          </TouchableOpacity>
         </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-};
+      </ImageBackground>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
+    background: {
+      width: '100%',
+      height: '100%'
+    },
+    logo:{
+      marginLeft: '-15%',
+      marginTop: '5%',
+      width: 500,
+      height: 500,
+    },
+    signup: {
+      backgroundColor: 'white',
+      color: '#3A59FF',
+      width: "75%",
+      borderRadius: 25,
+      textAlign: 'center',
+      fontWeight: 'bold',
+      marginLeft: '11%',
+      padding: "2%",
+      fontSize:  27,
+      marginTop: '5%'
+    },
+    login: {
+      backgroundColor: '#3A59FF',
+      color: 'white',
+      width: "75%",
+      borderRadius: 25,
+      textAlign: 'center',
+      fontWeight: 'bold',
+      marginLeft: '11%',
+      padding: "2%",
+      fontSize:  27,
+      marginTop: '10%'
+    }
 });
-
-export default App;
