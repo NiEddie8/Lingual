@@ -1,92 +1,138 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the TypeScript template
- * https://github.com/react-native-community/react-native-template-typescript
- *
- * @format
- */
-
-
 import * as React from 'react';
-import { StyleSheet, Text, View, ImageBackground, Image, TouchableOpacity, Alert } from 'react-native';
+import { Button, View, Text, StyleSheet, ImageBackground } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-export default class App extends React.Component {
+import { LoginScreen2 } from './pages/Login-Register/LoginScreen';
+import { HomeScreen2 } from './pages/Login-Register/HomeScreen';
+import { RegisterScreen2 } from './pages/Login-Register/RegisterScreen';
+import DashboardScreen2 from './pages/Dashboard-Tabs/DashboardScreen';
+import LearnScreen2 from './pages/Dashboard-Tabs/LearnScreen';
+import { ChineseScreen2 } from './pages/Chinese/ChineseScreen';
+import { ChineseFlashcardsScreen2 } from './pages/Chinese/ChineseFlashcardsScreen';
+import { ChineseSpeakingScreen2 } from './pages/Chinese/ChineseSpeakingScreen';
+import { ChineseWritingScreen2 } from './pages/Chinese/ChineseWritingScreen';
+import TemplateScreen2 from './pages/Dashboard-Tabs/TemplateScreen';
 
-  signupPressed = ()=>{
-    Alert.alert("Completed Sign Up")
-  }
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { faHome } from '@fortawesome/free-solid-svg-icons/faHome'
+import { faGraduationCap } from '@fortawesome/free-solid-svg-icons/faGraduationCap'
 
-  loginPressed = ()=> {
-    Alert.alert("Completed Login!")
-  }
 
-  render() {
-    return (
-      <ImageBackground
-        source={require('./images/background.jpeg')}
-        style={styles.background}
-      >
-        <View>
-          <Image
-            source={require('./images/logo.png')}
-            style={styles.logo}
-            resizeMode="contain"
-          >
-          </Image>
-          <TouchableOpacity 
-            onPress={this.signupPressed}
-          >
-            <Text style={styles.signup}>Sign Up</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={this.loginPressed}
-          >
-            <Text style={styles.login}>Log In</Text>
-          </TouchableOpacity>
-        </View>
-      </ImageBackground>
-    );
-  }
+const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
+
+function HomeScreen({ navigation }) {
+  return <HomeScreen2/>;
 }
 
-const styles = StyleSheet.create({
-    background: {
-      width: '100%',
-      height: '100%'
-    },
-    logo:{
-      marginLeft: '-15%',
-      marginTop: '5%',
-      width: 500,
-      height: 500,
-    },
-    signup: {
-      backgroundColor: 'white',
-      color: '#3A59FF',
-      width: "75%",
-      borderRadius: 25,
-      textAlign: 'center',
-      fontWeight: 'bold',
-      marginLeft: '11%',
-      padding: "2%",
-      fontSize:  27,
-      marginTop: '5%'
-    },
-    login: {
-      backgroundColor: '#3A59FF',
-      color: 'white',
-      width: "75%",
-      borderRadius: 25,
-      textAlign: 'center',
-      fontWeight: 'bold',
-      marginLeft: '11%',
-      padding: "2%",
-      fontSize:  27,
-      marginTop: '10%'
-    }
-});
+function LoginScreen({ navigation }) {
+  return <LoginScreen2/>;
+}
+
+function RegisterScreen({ navigation }) {
+  return <RegisterScreen2/>;
+}
+
+function DashboardTabScreen({ navigation }) {
+  return(
+    <Tab.Navigator 
+      screenOptions={{
+        headerShown: false,
+        tabBarLabel: 'false',
+        tabBarStyle: {
+          position: 'absolute',
+          marginBottom: 30,
+          marginLeft: 20,
+          marginRight: 20,
+          elevation: 0,
+          backgroundColor: '#ffffff',
+          borderRadius: 15,
+          height: 90,
+        }
+      }}
+    >
+      <Tab.Screen
+        name="Dashboard"
+        component={DashboardScreen}
+        options={{
+          tabBarLabel: 'Home',
+          tabBarIcon: ({color}) => (
+            <FontAwesomeIcon icon={ faHome } color={color} size={25} style={{marginTop:10}}/>
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Learn"
+        component={LearnScreen}
+        options={{
+          tabBarLabel: 'Learn',
+          tabBarIcon: ({color}) => (
+            <FontAwesomeIcon icon={ faGraduationCap } color={color} size={25} style={{marginTop:10}}/>
+          ),
+        }}
+      />
+       <Tab.Screen
+        name="Template"
+        component={TemplateScreen}
+        options={{
+          tabBarLabel: 'Template',
+          tabBarIcon: ({color}) => (
+            <FontAwesomeIcon icon={ faHome } color={color} size={25} style={{marginTop:10}}/>
+          ),
+        }}
+      />
+    </Tab.Navigator>
+
+  );
+}
+
+function DashboardScreen({ navigation }) {
+  return DashboardScreen2({navigation});
+}
+
+function LearnScreen({ navigation }) {
+  return LearnScreen2({navigation});
+}
+
+function ChineseScreen({ navigation }) {
+  return <ChineseScreen2/>;
+}
+
+function ChineseFlashcardsScreen({ navigation }) {
+  return <ChineseFlashcardsScreen2/>;
+}
+
+function ChineseSpeakingScreen({ navigation }) {
+  return <ChineseSpeakingScreen2/>;
+}
+
+function ChineseWritingScreen({ navigation }) {
+  return <ChineseWritingScreen2/>;
+}
+
+function TemplateScreen({ navigation }) {
+  return TemplateScreen2({navigation});
+}
+
+export default function App() {
+  return (
+      <NavigationContainer>
+            <Stack.Navigator initialRouteName="Home">
+              <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }}/>
+              <Stack.Screen name="Login" component={LoginScreen} />
+              <Stack.Screen name="Register" component={RegisterScreen} />
+              <Stack.Screen
+              name="DashboardTabs"
+              component={DashboardTabScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen name="Chinese" component={ChineseScreen} />
+            <Stack.Screen name="Chinese Flashcards" component={ChineseFlashcardsScreen} />
+            <Stack.Screen name="Chinese Speaking" component={ChineseSpeakingScreen} />
+            <Stack.Screen name="Chinese Writing" component={ChineseWritingScreen} />
+            </Stack.Navigator>
+      </NavigationContainer>
+  );
+}
