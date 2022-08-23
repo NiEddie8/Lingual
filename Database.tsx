@@ -3,15 +3,15 @@ import { enablePromise, openDatabase, SQLiteDatabase } from "react-native-sqlite
 enablePromise(true);
 
 const getDb = async (): Promise<SQLiteDatabase> => {
-    return await openDatabase({name: 'Language_Learner.db', createFromLocation : 1});
+    return await openDatabase({name: 'Language_Learner.db', location : 'default'});
 }
 
-export const loadChinese = async (id: number): Promise<> => {
+export const loadChinese = async (id: number): Promise<any> => {
     const db = await getDb();
     const resultSet = await db.executeSql(
-        ' SELECT Chinese.id, Chinese.ChineseCharacter, Chinese.EnglishTranslation ' +
-        ' FROM Chinese' + 
-        ' WHERE id=?'
+        ' SELECT id, ChineseCharacter, EnglishTranslation ' +
+        ' FROM Chinese ' + 
+        ' WHERE id=? ',
         [id]);
 
     console.log('Result: ', JSON.stringify(resultSet));
