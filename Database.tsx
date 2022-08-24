@@ -1,4 +1,5 @@
 import { enablePromise, openDatabase, SQLiteDatabase } from "react-native-sqlite-storage";
+import { ChineseFlashcardData } from "./model/Types";
 
 enablePromise(true);
 
@@ -13,11 +14,8 @@ export const loadChinese = async (id: number): Promise<any> => {
         ' FROM Chinese ' + 
         ' WHERE id=? ',
         [id]);
-
     console.log('Result: ', JSON.stringify(resultSet));
     if (resultSet.length > 0 && resultSet[0].rows.length > 0) {
-        return resultSet[0].rows.item(0);
-    } else {
-        return Promise.reject();
+            return resultSet[0].rows.item(0);
     }
 }
