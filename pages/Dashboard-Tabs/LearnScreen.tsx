@@ -14,6 +14,10 @@ const styles = StyleSheet.create({
         backgroundColor: 'grey',
         marginTop: 80,
         width: '90%',
+        shadowOffset: { width: 0, height: 1 },
+        shadowRadius: 2,
+        elevation: 2,
+        shadowOpacity: 0.4
     }
       
 });

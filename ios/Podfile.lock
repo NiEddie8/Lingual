@@ -278,6 +278,8 @@ PODS:
     - React-Core
   - react-native-sqlite-storage (6.0.1):
     - React-Core
+  - react-native-voice (1.1.9):
+    - React
   - react-native-webview (11.23.0):
     - React-Core
   - React-perflogger (0.67.4)
@@ -396,6 +398,8 @@ PODS:
     - React-Core
   - RNVectorIcons (9.2.0):
     - React-Core
+  - TextToSpeech (4.1.0):
+    - React
   - TOCropViewController (2.6.1)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
@@ -446,6 +450,7 @@ DEPENDENCIES:
   - react-native-pager-view (from `../node_modules/react-native-pager-view`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - react-native-sqlite-storage (from `../node_modules/react-native-sqlite-storage`)
+  - "react-native-voice (from `../node_modules/@react-native-community/voice`)"
   - react-native-webview (from `../node_modules/react-native-webview`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
@@ -467,6 +472,7 @@ DEPENDENCIES:
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSVG (from `../node_modules/react-native-svg`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
+  - TextToSpeech (from `../node_modules/react-native-tts`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -528,6 +534,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-safe-area-context"
   react-native-sqlite-storage:
     :path: "../node_modules/react-native-sqlite-storage"
+  react-native-voice:
+    :path: "../node_modules/@react-native-community/voice"
   react-native-webview:
     :path: "../node_modules/react-native-webview"
   React-perflogger:
@@ -570,6 +578,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-svg"
   RNVectorIcons:
     :path: "../node_modules/react-native-vector-icons"
+  TextToSpeech:
+    :path: "../node_modules/react-native-tts"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -607,6 +617,7 @@ SPEC CHECKSUMS:
   react-native-pager-view: fc311e95f8ba2b710deae6cb0a21f2102fb49d99
   react-native-safe-area-context: 5b8a418400eb3d8364aa87300e865c0262cc17b9
   react-native-sqlite-storage: 6df009b8b67fe34c57c5fd06ee8fff7669fece6d
+  react-native-voice: 0355d771838b00acfb4b112b2c496c2653e2f8c8
   react-native-webview: c09ea739796b91286ae1f581d2db536b48c33911
   React-perflogger: 0afaf2f01a47fd0fc368a93bfbb5bd3b26db6e7f
   React-RCTActionSheet: 59f35c4029e0b532fc42114241a06e170b7431a2
@@ -628,10 +639,11 @@ SPEC CHECKSUMS:
   RNScreens: 4a1af06327774490d97342c00aee0c2bafb497b7
   RNSVG: ecd661f380a07ba690c9c5929c475a44f432d674
   RNVectorIcons: fcc2f6cb32f5735b586e66d14103a74ce6ad61f8
+  TextToSpeech: b3aa777ff5585705f179c0a2436bfd0926d1716e
   TOCropViewController: edfd4f25713d56905ad1e0b9f5be3fbe0f59c863
   Yoga: d6b6a80659aa3e91aaba01d0012e7edcbedcbecd
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 8dfeec288a3bc09fd4e95c9c6c1b97615ccb7de8
+PODFILE CHECKSUM: a13f2ae1e0ec42ab3283989f4229c86ae2be9162
 
 COCOAPODS: 1.11.2
