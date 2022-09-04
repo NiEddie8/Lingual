@@ -107,7 +107,6 @@ export function ChineseWritingScreen2() {
       <Button onPress={() => undoDraw()} style={styles.sketchButton}><Text style={{ fontSize: 15, color: 'white' }}>Undo</Text></Button>
       <Button onPress={() => delDraw()} style={styles.sketchButton}><Text style={{ fontSize: 15, color: 'white' }}>Delete</Text></Button>
       </View>
-      <Button onPress={testSimilar} style={styles.testButton}><Text style={{ fontSize: 15 }}>Test</Text></Button>
            {/*Here we will return the view when state is true 
         and will return false if state is false*/}
         {num === 10 ? (
