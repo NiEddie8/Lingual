@@ -17,7 +17,7 @@ export function HomeScreen2() {
             resizeMode="contain"
           >
           </Image>
-        <Text style={styles.header}>Language Learner</Text>
+        <Text style={styles.header}>Lingual</Text>
 
         <Text style={styles.normalText}>
         The best platform to learn a new language!

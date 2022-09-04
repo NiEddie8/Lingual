@@ -41,7 +41,7 @@ import { StyleSheet, Text, Image, ImageBackground } from 'react-native';
                     resizeMode="contain"
                 >
                 </Image>
-                <Text style={styles.header}>Language Learner</Text>
+                <Text style={styles.header}>Lingual</Text>
 
                 <Text style={styles.normalText}>
                 The best platform to learn a new language!
