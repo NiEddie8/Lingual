@@ -143,7 +143,6 @@ export function ChineseSpeakingScreen2() {
         <SafeAreaView>
           <View style={styles.textInputStyle}>
             <TextInput
-              numberOfLines={1}
               value={result}
               placeholder="Speak"
               style={{ flex: 1, fontSize: 50 }}
