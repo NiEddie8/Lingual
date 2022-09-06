@@ -71,7 +71,7 @@ export function ChineseWritingScreen2() {
 
   return (
     <ImageBackground
-      source={require('../../images/bluebackground.webp')}
+      source={require('../../images/blueBackground.jpeg')}
       style={styles.background}
     >
       <View style={styles.container}>

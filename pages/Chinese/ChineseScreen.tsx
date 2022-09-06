@@ -6,7 +6,7 @@ export function ChineseScreen2() {
   const navigation = useNavigation();
   return (
     <ImageBackground
-      source={require('../../images/bluebackground.webp')}
+      source={require('../../images/blueBackground.jpeg')}
       style={styles.background}
     >
       <TouchableOpacity

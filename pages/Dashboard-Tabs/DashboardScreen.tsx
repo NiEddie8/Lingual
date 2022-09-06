@@ -32,7 +32,7 @@ import { StyleSheet, Text, Image, ImageBackground } from 'react-native';
     const DashboardScreen2= ({ navigation }) => {
         return (
             <ImageBackground
-            source={require('../../images/bluebackground.webp')}
+            source={require('../../images/blueBackground.jpeg')}
             style={styles.background}
             >
                 <Image

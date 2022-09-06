@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
 const LearnScreen2= ({ navigation }) => {
     return (
         <ImageBackground
-        source={require('../../images/bluebackground.webp')}
+        source={require('../../images/blueBackground.jpeg')}
         style={styles.background}
         >
          <TouchableOpacity

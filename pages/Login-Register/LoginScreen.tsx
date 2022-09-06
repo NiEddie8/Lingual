@@ -10,8 +10,8 @@ export function LoginScreen2() {
   let [password, setPassword] = useState('');
 
   return(
-  <ImageBackground
-    source={require('../../images/bluebackground.webp')}
+    <ImageBackground
+    source={require('../../images/purpleBackground.jpeg')}
     style={styles.background}
     >
         <Image
@@ -62,6 +62,7 @@ const styles = StyleSheet.create({
     width: 350,
     height: 350,
     alignSelf: 'center',
+    marginTop: 60,
   },
   textInput: {
     backgroundColor: 'white',

@@ -63,7 +63,7 @@ export function ChineseFlashcardsScreen2() {
  
   return(
   <ImageBackground
-  source={require('../../images/bluebackground.webp')}
+  source={require('../../images/blueBackground.jpeg')}
   style={styles.background}
   >
   <CardFlip style={styles.cardContainer} flipDirection='x' ref={(card) => this.card = card} >

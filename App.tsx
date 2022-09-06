@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Button, View, Text, StyleSheet, ImageBackground } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { Button, View, Text, StyleSheet, Image, ImageBackground } from 'react-native';
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -18,6 +18,7 @@ import TemplateScreen2 from './pages/Dashboard-Tabs/TemplateScreen';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faHome } from '@fortawesome/free-solid-svg-icons/faHome'
 import { faGraduationCap } from '@fortawesome/free-solid-svg-icons/faGraduationCap'
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 
 const Tab = createBottomTabNavigator();
@@ -119,9 +120,9 @@ function TemplateScreen({ navigation }) {
 export default function App() {
   return (
       <NavigationContainer>
-            <Stack.Navigator initialRouteName="Home">
+            <Stack.Navigator initialRouteName="Home" screenOptions={{ headerTransparent: true, headerTintColor: 'white' }}>
               <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }}/>
-              <Stack.Screen name="Login" component={LoginScreen} />
+              <Stack.Screen name="Login" component={LoginScreen}/>
               <Stack.Screen name="Register" component={RegisterScreen} />
               <Stack.Screen
               name="DashboardTabs"
@@ -136,3 +137,10 @@ export default function App() {
       </NavigationContainer>
   );
 }
+
+const styles = StyleSheet.create({
+  background: {
+    width: '100%',
+    height: '100%'
+  },
+});
