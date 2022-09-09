@@ -1,5 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, Image, ImageBackground } from 'react-native';
+import { StyleSheet, Text, Image, ImageBackground, TouchableOpacity } from 'react-native';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons/faRightFromBracket'
 
     const styles = StyleSheet.create({
         background: {
@@ -7,7 +9,7 @@ import { StyleSheet, Text, Image, ImageBackground } from 'react-native';
           height: '100%'
         },
         logo: {
-          marginTop: 100,
+          marginTop: 50,
           width: 350,
           height: 350,
           alignSelf: 'center',
@@ -15,7 +17,7 @@ import { StyleSheet, Text, Image, ImageBackground } from 'react-native';
         header: {
             fontSize: 26,
             textAlign:'center', 
-            color: 'purple',
+            color: 'white',
             fontWeight: 'bold',
             marginTop: -50,
             marginBottom: 15,
@@ -23,7 +25,7 @@ import { StyleSheet, Text, Image, ImageBackground } from 'react-native';
         normalText: {
             fontSize: 16,
             lineHeight: 26,
-            color: '#FFFAFA',
+            color: 'white',
             textAlign: 'center',
             marginBottom: 20,
         },
@@ -32,9 +34,12 @@ import { StyleSheet, Text, Image, ImageBackground } from 'react-native';
     const DashboardScreen2= ({ navigation }) => {
         return (
             <ImageBackground
-            source={require('../../images/blueBackground.jpeg')}
+            source={require('../../images/purpleBackground.jpeg')}
             style={styles.background}
             >
+                <TouchableOpacity style={{marginTop: 50, marginLeft: 325}} onPress={() => navigation.navigate('Home')}>
+                <FontAwesomeIcon icon={ faRightFromBracket } color='white' size={30}/>
+                </TouchableOpacity>
                 <Image
                     source={require('../../images/logo.png')}
                     style={styles.logo}

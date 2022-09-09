@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
 const TemplateScreen2= ({ navigation }) => {
     return (
         <ImageBackground
-        source={require('../../images/blueBackground.jpeg')}
+        source={require('../../images/purpleBackground.jpeg')}
         style={styles.background}
         >
             <Image

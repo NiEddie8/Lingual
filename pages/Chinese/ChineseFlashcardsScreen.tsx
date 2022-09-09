@@ -63,7 +63,7 @@ export function ChineseFlashcardsScreen2() {
  
   return(
   <ImageBackground
-  source={require('../../images/blueBackground.jpeg')}
+  source={require('../../images/purpleBackground.jpeg')}
   style={styles.background}
   >
   <CardFlip style={styles.cardContainer} flipDirection='x' ref={(card) => this.card = card} >
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
     fontSize: 35,
   },
   cardContainer: {
-    marginTop: 100,
+    marginTop: 130,
     alignSelf: 'center',
     width: 300,
     height: 300,
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
   submitButton: {
-    backgroundColor: 'purple',
+    backgroundColor: '#87ceeb',
     width: 300,
     marginTop: 75,
     padding: 5,

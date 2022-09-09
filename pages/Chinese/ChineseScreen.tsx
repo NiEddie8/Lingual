@@ -6,11 +6,11 @@ export function ChineseScreen2() {
   const navigation = useNavigation();
   return (
     <ImageBackground
-      source={require('../../images/blueBackground.jpeg')}
+      source={require('../../images/purpleBackground.jpeg')}
       style={styles.background}
     >
       <TouchableOpacity
-        style={styles.languageStyle}
+        style={styles.languageStyleFirst}
         onPress={() => navigation.navigate('Chinese Flashcards')}
       >
         <Text>Flashcards</Text>
@@ -36,12 +36,25 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%'
   },
+  languageStyleFirst: {
+    alignItems: 'center',
+    alignSelf: 'center',
+    padding: 50,
+    borderRadius: 10,
+    backgroundColor: 'white',
+    marginTop: 140,
+    width: '90%',
+    shadowOffset: { width: 0, height: 1 },
+    shadowRadius: 2,
+    elevation: 2,
+    shadowOpacity: 0.4
+  },
   languageStyle: {
     alignItems: 'center',
     alignSelf: 'center',
     padding: 50,
     borderRadius: 10,
-    backgroundColor: 'grey',
+    backgroundColor: 'white',
     marginTop: 80,
     width: '90%',
     shadowOffset: { width: 0, height: 1 },

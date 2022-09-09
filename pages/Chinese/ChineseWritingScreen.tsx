@@ -71,7 +71,7 @@ export function ChineseWritingScreen2() {
 
   return (
     <ImageBackground
-      source={require('../../images/blueBackground.jpeg')}
+      source={require('../../images/purpleBackground.jpeg')}
       style={styles.background}
     >
       <View style={styles.container}>
@@ -161,7 +161,8 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 1 },
     shadowRadius: 2,
     elevation: 2,
-    shadowOpacity: 0.4
+    shadowOpacity: 0.4,
+    marginTop: 100,
   },
   textInputStyle: {
     marginTop: 50,
@@ -192,7 +193,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   submitButton: {
-    backgroundColor: 'purple',
+    backgroundColor: '#87ceeb',
     width: 300,
     marginTop: 40,
     padding: 5,

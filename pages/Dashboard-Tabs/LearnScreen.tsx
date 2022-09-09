@@ -6,12 +6,12 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%'
       },
-    languageStyle: {
+    Chinese: {
         alignItems: 'center',
         alignSelf: 'center',
         padding: 50,
         borderRadius: 10,
-        backgroundColor: 'grey',
+        backgroundColor: 'red',
         marginTop: 80,
         width: '90%',
         shadowOffset: { width: 0, height: 1 },
@@ -25,16 +25,16 @@ const styles = StyleSheet.create({
 const LearnScreen2= ({ navigation }) => {
     return (
         <ImageBackground
-        source={require('../../images/blueBackground.jpeg')}
+        source={require('../../images/purpleBackground.jpeg')}
         style={styles.background}
         >
          <TouchableOpacity
-        style={styles.languageStyle}
+        style={styles.Chinese}
         onPress={() => navigation.navigate('Chinese')}
       >
-        <Text>Chinese</Text>
+        <Text style={{color: 'yellow', fontWeight: 'bold', fontSize: 17}}>Chinese</Text>
       </TouchableOpacity>
-        </ImageBackground>
+      </ImageBackground>
     );
 };
 export default LearnScreen2;

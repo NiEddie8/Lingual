@@ -10,7 +10,7 @@ export function RegisterScreen2() {
   
     return(
     <ImageBackground
-      source={require('../../images/blueBackground.jpeg')}
+      source={require('../../images/purpleBackground.jpeg')}
       style={styles.background}
       >
           <Image
@@ -55,7 +55,7 @@ export function RegisterScreen2() {
           </TouchableOpacity>
         </View>
            <Button style={styles.button} mode="contained" onPress={() => navigation.navigate('DashboardTabs')} >
-              Create Account
+              <Text style={{color: "black"}}>Create Account</Text>
           </Button>
       </ImageBackground>
     );  
@@ -70,7 +70,7 @@ export function RegisterScreen2() {
       width: 350,
       height: 350,
       alignSelf: 'center',
-      marginTop: -40
+      marginTop: 40,
     },
     row: {
         flexDirection: 'row',
@@ -79,6 +79,7 @@ export function RegisterScreen2() {
       },
     textInput: {
       backgroundColor: 'white',
+      fontStyle: 'sans-serif',
       width: 325,
       marginVertical: 10,
       padding: 20,
@@ -88,14 +89,15 @@ export function RegisterScreen2() {
     },
     text: {
       fontSize: 26,
+      fontFamily: 'sans-serif',
       textAlign:'center', 
-      color: 'black',
+      color: 'white',
       fontWeight: 'bold',
       marginTop: -50,
       marginBottom: 40
     },
     button: {
-      backgroundColor: 'purple',
+      backgroundColor: 'white',
       width: 325,
       marginVertical: 50,
       padding: 5,
@@ -104,14 +106,15 @@ export function RegisterScreen2() {
       alignSelf: 'center',
   },
     touchableOpacity: {
-        color: 'black',
+        color: 'white',
         alignSelf: 'flex-end',
         fontSize: 15,
         fontWeight: 'bold',
     },
     touchableOpacityLink: {
-      color: 'purple',
+      color: 'white',
       alignSelf: 'flex-end',
+      fontFamily: 'sans-serif',
       marginRight: 30,
       fontSize: 15,
       fontWeight: 'bold',

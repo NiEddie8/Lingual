@@ -47,7 +47,7 @@ export function LoginScreen2() {
              <Text style={styles.touchableOpacity}>Create an Account</Text>
         </TouchableOpacity>
          <Button style={styles.button} mode="contained" onPress={() => navigation.navigate('DashboardTabs')} >
-            Login
+            <Text style={{color: 'black'}}>Login</Text>
         </Button>
     </ImageBackground>
   );  
@@ -76,13 +76,13 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 26,
     textAlign:'center', 
-    color: 'black',
+    color: 'white',
     fontWeight: 'bold',
     marginTop: -50,
     marginBottom: 40
   },
   button: {
-    backgroundColor: 'purple',
+    backgroundColor: 'white',
     width: 325,
     marginVertical: 50,
     padding: 5,
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
 },
   touchableOpacity: {
-    color: 'purple',
+    color: 'white',
     alignSelf: 'flex-end',
     marginRight: 30,
     fontSize: 15,
