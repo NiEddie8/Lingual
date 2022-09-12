@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, Text, ImageBackground } from 'react-native';
+import { StyleSheet, TouchableOpacity, Text, ImageBackground, Image } from 'react-native';
 
 const styles = StyleSheet.create({
     background: {
@@ -9,16 +9,15 @@ const styles = StyleSheet.create({
     Chinese: {
         alignItems: 'center',
         alignSelf: 'center',
-        padding: 50,
+        width: 350,
+        height: 220,
         borderRadius: 10,
-        backgroundColor: 'red',
         marginTop: 80,
-        width: '90%',
         shadowOffset: { width: 0, height: 1 },
         shadowRadius: 2,
         elevation: 2,
         shadowOpacity: 0.4
-    }
+    },
       
 });
 
@@ -29,10 +28,13 @@ const LearnScreen2= ({ navigation }) => {
         style={styles.background}
         >
          <TouchableOpacity
-        style={styles.Chinese}
         onPress={() => navigation.navigate('Chinese')}
       >
-        <Text style={{color: 'yellow', fontWeight: 'bold', fontSize: 17}}>Chinese</Text>
+        <Image
+                style={styles.Chinese}
+                source={require('../../images/chineseFlag.png')}
+            >
+            </Image>
       </TouchableOpacity>
       </ImageBackground>
     );

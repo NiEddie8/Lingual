@@ -79,7 +79,6 @@ export function RegisterScreen2() {
       },
     textInput: {
       backgroundColor: 'white',
-      fontStyle: 'sans-serif',
       width: 325,
       marginVertical: 10,
       padding: 20,
@@ -89,7 +88,6 @@ export function RegisterScreen2() {
     },
     text: {
       fontSize: 26,
-      fontFamily: 'sans-serif',
       textAlign:'center', 
       color: 'white',
       fontWeight: 'bold',
@@ -114,7 +112,6 @@ export function RegisterScreen2() {
     touchableOpacityLink: {
       color: 'white',
       alignSelf: 'flex-end',
-      fontFamily: 'sans-serif',
       marginRight: 30,
       fontSize: 15,
       fontWeight: 'bold',

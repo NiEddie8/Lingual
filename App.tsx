@@ -13,12 +13,14 @@ import { ChineseScreen2 } from './pages/Chinese/ChineseScreen';
 import { ChineseFlashcardsScreen2 } from './pages/Chinese/ChineseFlashcardsScreen';
 import { ChineseSpeakingScreen2 } from './pages/Chinese/ChineseSpeakingScreen';
 import { ChineseWritingScreen2 } from './pages/Chinese/ChineseWritingScreen';
-import TemplateScreen2 from './pages/Dashboard-Tabs/TemplateScreen';
+import CreateScreen2 from './pages/Dashboard-Tabs/CreateScreen';
 
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faHome } from '@fortawesome/free-solid-svg-icons/faHome'
 import { faGraduationCap } from '@fortawesome/free-solid-svg-icons/faGraduationCap'
+import { faPlus } from '@fortawesome/free-solid-svg-icons/faPlus'
 import { Colors } from 'react-native/Libraries/NewAppScreen';
+
 
 
 const Tab = createBottomTabNavigator();
@@ -75,12 +77,12 @@ function DashboardTabScreen({ navigation }) {
         }}
       />
        <Tab.Screen
-        name="Template"
-        component={TemplateScreen}
+        name="Create"
+        component={CreateScreen}
         options={{
-          tabBarLabel: 'Template',
+          tabBarLabel: 'Create',
           tabBarIcon: ({color}) => (
-            <FontAwesomeIcon icon={ faHome } color={color} size={25} style={{marginTop:10}}/>
+            <FontAwesomeIcon icon={ faPlus } color={color} size={25} style={{marginTop:10}}/>
           ),
         }}
       />
@@ -97,6 +99,11 @@ function LearnScreen({ navigation }) {
   return LearnScreen2({navigation});
 }
 
+function CreateScreen({ navigation }) {
+  return CreateScreen2({navigation});
+}
+
+
 function ChineseScreen({ navigation }) {
   return <ChineseScreen2/>;
 }
@@ -111,10 +118,6 @@ function ChineseSpeakingScreen({ navigation }) {
 
 function ChineseWritingScreen({ navigation }) {
   return <ChineseWritingScreen2/>;
-}
-
-function TemplateScreen({ navigation }) {
-  return TemplateScreen2({navigation});
 }
 
 export default function App() {

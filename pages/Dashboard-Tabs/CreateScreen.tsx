@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
       },
 });
 
-const TemplateScreen2= ({ navigation }) => {
+const CreateScreen2= ({ navigation }) => {
     return (
         <ImageBackground
         source={require('../../images/purpleBackground.jpeg')}
@@ -49,4 +49,4 @@ const TemplateScreen2= ({ navigation }) => {
         </ImageBackground>
     );
 };
-export default TemplateScreen2;
+export default CreateScreen2;
