@@ -60,3 +60,33 @@ export const createSet = async ( userSet: UserSet, translations: Translation[] )
     });
     return newSet;
 };
+
+export const loadSet = async (id: number): Promise<any> => {
+    const db = await getDb();
+    const resultSet = await db.executeSql(
+        ' SELECT id, name, language ' +
+        ' FROM user_set ' + 
+        ' WHERE id=? ',
+        [id]);
+    console.log('Result: ', JSON.stringify(resultSet));
+    if (resultSet.length > 0 && resultSet[0].rows.length > 0) {
+            return resultSet[0].rows.item(0) as UserSet;
+    }
+};
+
+export const loadAllSets = async (): Promise<UserSet[]> => {
+    const db = await getDb();
+    const resultSet = await db.executeSql(
+        ' SELECT id, name, language ' +
+        ' FROM user_set ');
+    console.log('Result: ', JSON.stringify(resultSet));
+    const userSets: UserSet[] = [];
+    if (resultSet.length > 0 && resultSet[0].rows.length > 0) {
+        for (let i = 0; i < resultSet[0].rows.length; i++) {
+            const item = resultSet[0].rows.item(i);
+            userSets.push(item as UserSet);
+        }
+    }
+
+    return userSets;
+};

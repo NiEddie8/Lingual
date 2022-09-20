@@ -9,10 +9,10 @@ import { HomeScreen2 } from './pages/Login-Register/HomeScreen';
 import { RegisterScreen2 } from './pages/Login-Register/RegisterScreen';
 import DashboardScreen2 from './pages/Dashboard-Tabs/DashboardScreen';
 import LearnScreen2 from './pages/Dashboard-Tabs/LearnScreen';
-import { ChineseScreen2 } from './pages/Chinese/ChineseScreen';
-import { ChineseFlashcardsScreen2 } from './pages/Chinese/ChineseFlashcardsScreen';
-import { ChineseSpeakingScreen2 } from './pages/Chinese/ChineseSpeakingScreen';
-import { ChineseWritingScreen2 } from './pages/Chinese/ChineseWritingScreen';
+import { FunctionScreen2 } from './pages/FunctionScreen';
+import { FlashcardsScreen2 } from './pages/FlashcardsScreen';
+import { SpeakingScreen2 } from './pages/SpeakingScreen';
+import { WritingScreen2 } from './pages/WritingScreen';
 import CreateScreen2 from './pages/Dashboard-Tabs/CreateScreen';
 
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
@@ -104,20 +104,20 @@ function CreateScreen({ navigation }) {
 }
 
 
-function ChineseScreen({ navigation }) {
-  return <ChineseScreen2/>;
+function FunctionScreen({ navigation }) {
+  return <FunctionScreen2/>;
 }
 
-function ChineseFlashcardsScreen({ navigation }) {
-  return <ChineseFlashcardsScreen2/>;
+function FlashcardsScreen({ navigation }) {
+  return <FlashcardsScreen2/>;
 }
 
-function ChineseSpeakingScreen({ navigation }) {
-  return <ChineseSpeakingScreen2/>;
+function SpeakingScreen({ navigation }) {
+  return <SpeakingScreen2/>;
 }
 
-function ChineseWritingScreen({ navigation }) {
-  return <ChineseWritingScreen2/>;
+function WritingScreen({ navigation }) {
+  return <WritingScreen2/>;
 }
 
 export default function App() {
@@ -132,10 +132,10 @@ export default function App() {
               component={DashboardTabScreen}
               options={{ headerShown: false }}
             />
-            <Stack.Screen name="Chinese" component={ChineseScreen} />
-            <Stack.Screen name="Chinese Flashcards" component={ChineseFlashcardsScreen} />
-            <Stack.Screen name="Chinese Speaking" component={ChineseSpeakingScreen} />
-            <Stack.Screen name="Chinese Writing" component={ChineseWritingScreen} />
+            <Stack.Screen name="Function" component={FunctionScreen} />
+            <Stack.Screen name="Flashcards" component={FlashcardsScreen} />
+            <Stack.Screen name="Speaking" component={SpeakingScreen} />
+            <Stack.Screen name="Writing" component={WritingScreen} />
             </Stack.Navigator>
       </NavigationContainer>
   );

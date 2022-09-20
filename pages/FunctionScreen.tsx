@@ -2,28 +2,28 @@ import React from 'react';
 import { StyleSheet, ImageBackground, Text, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-export function ChineseScreen2() {
+export function FunctionScreen2() {
   const navigation = useNavigation();
   return (
     <ImageBackground
-      source={require('../../images/purpleBackground.jpeg')}
+      source={require('../images/purpleBackground.jpeg')}
       style={styles.background}
-    >
+    > 
       <TouchableOpacity
         style={styles.languageStyleFirst}
-        onPress={() => navigation.navigate('Chinese Flashcards')}
+        onPress={() => navigation.navigate('Flashcards')}
       >
         <Text>Flashcards</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.languageStyle}
-        onPress={() => navigation.navigate('Chinese Speaking')}
+        onPress={() => navigation.navigate('Speaking')}
       >
         <Text>Speaking</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.languageStyle}
-        onPress={() => navigation.navigate('Chinese Writing')}
+        onPress={() => navigation.navigate('Writing')}
       >
         <Text>Writing</Text>
       </TouchableOpacity>

@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     color: 'white',
     fontWeight: 'bold',
-    marginTop: 15,
+    marginTop: 25,
     marginLeft: 15,
   },
   descriptionHeader: {
@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
     marginTop: 25,
     marginBottom: 10,
     marginLeft: 15,
+    marginRight: 18,
   },
   textInput: {
     backgroundColor: 'white',
@@ -56,7 +57,7 @@ const styles = StyleSheet.create({
     marginLeft: 12,
     padding: 20,
     borderRadius: 7,
-    fontSize: 15,
+    fontSize: 12,
     alignSelf: 'center',
     flexDirection:'column',
     flex: 1,
@@ -75,11 +76,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#87ceeb',
     marginVertical: 10,
     marginLeft: 12,
-    padding: 20,
+    padding: 5,
     borderRadius: 3,
     alignSelf: 'center',
     flexDirection: 'column',
-    flex: 1,
+
   },
   submitButton: {
     backgroundColor: '#87ceeb',
@@ -146,7 +147,7 @@ const CreateScreen2 = ({ navigation }) => {
             }
           />
           <View style={{ flexDirection: 'row' }}>
-            <Text style={styles.descriptionHeader}>Character/Word</Text>
+            <Text style={styles.descriptionHeader}>Character</Text>
             <Text style={styles.descriptionHeader}>Translation</Text>
           </View>
           <View style={{ flexDirection: 'row' }}>

@@ -1,33 +1,26 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, ImageBackground } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, SafeAreaView, TouchableOpacity, Image, View, Text, TextInput, ActivityIndicator, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { loadChinese } from '../../Database';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faArrowLeft, unicode } from '@fortawesome/free-solid-svg-icons/faArrowLeft'
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons/faArrowRight'
-import { ChineseQuestion } from '../../model/Types';
-import { SketchCanvas } from '@terrylinla/react-native-sketch-canvas';
+import Voice from '@react-native-community/voice';
 import { Button } from 'react-native-paper';
+import { loadChinese } from '../Database';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons/faArrowLeft'
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons/faArrowRight'
+import { faMicrophone } from '@fortawesome/free-solid-svg-icons/faMicrophone'
+import { faMicrophoneSlash } from '@fortawesome/free-solid-svg-icons/faMicrophoneSlash'
+import { ChineseQuestion } from '../model/Types';
 
 
-export function ChineseWritingScreen2() {
-
+export function SpeakingScreen2() {
   const [num, setNum] = useState(1);
   const [question, setQuestion] = useState({} as ChineseQuestion);
   const [result, setResult] = useState('')
+  const [isLoading, setLoading] = useState(false)
   const [similar, setSimilar] = useState(false)
   const [color, setColor] = useState('')
   const [text, setText] = useState('')
   const [called, setCalled] = useState(false)
-
-  const undoDraw = () => {
-    setCalled(false);
-    this.sketch.undo();
-  }
-  const delDraw = () => {
-    setCalled(false);
-    this.sketch.clear();
-  }
 
   useEffect(() => {
     const loadQuestion = async () => {
@@ -40,6 +33,7 @@ export function ChineseWritingScreen2() {
   }, [num]);
 
   const incrementValue = async () => {
+    clearText();
     setCalled(false);
     if (num + 1 <= 10) {
       setNum(num + 1);
@@ -66,12 +60,60 @@ export function ChineseWritingScreen2() {
     }
   }
 
+  useEffect(() => {
+    Voice.onSpeechStart = onSpeechStartHandler;
+    Voice.onSpeechEnd = onSpeechEndHandler;
+    Voice.onSpeechResults = onSpeechResultsHandler;
+    return () => {
+      Voice.destroy().then(Voice.removeAllListeners);
+    }
+  }, [])
+
+  const clearText = () => {
+    setCalled(false);
+    setResult('');
+  }
+  const onSpeechStartHandler = (e) => {
+    setCalled(false);
+    console.log("start handler==>>>", e)
+  }
+  const onSpeechEndHandler = (e) => {
+    setCalled(false);
+    setLoading(false)
+    console.log("stop handler", e)
+  }
+
+  const onSpeechResultsHandler = (e) => {
+    setCalled(false);
+    let text = e.value[0]
+    setResult(text)
+    console.log("speech result handler", e)
+  }
+
+  const startRecording = async () => {
+    setCalled(false);
+    setLoading(true)
+    try {
+      await Voice.start('zh-CN')
+    } catch (error) {
+      console.log("error raised", error)
+    }
+  }
+
+  const stopRecording = async () => {
+    setCalled(false);
+    try {
+      await Voice.stop()
+    } catch (error) {
+      console.log("error raised", error)
+    }
+  }
 
   const navigation = useNavigation();
 
   return (
     <ImageBackground
-      source={require('../../images/purpleBackground.jpeg')}
+      source={require('../images/purpleBackground.jpeg')}
       style={styles.background}
     >
       <View style={styles.container}>
@@ -94,25 +136,58 @@ export function ChineseWritingScreen2() {
         {/*Here we will return the view when state is true 
         and will return false if state is false*/}
         { called === true ? (
-          <Text style={{ alignSelf: 'center', color: color, fontWeight: 'bold', marginTop: 7, marginBottom: -24 }}>{text}</Text>
+          <Text style={{ alignSelf: 'center', color: color, fontWeight: 'bold', marginTop: 15, marginBottom: -32 }}>{text}</Text>
         ) :
           null
         }
-      <SketchCanvas ref={(sketch) => this.sketch = sketch}
-      style={{ backgroundColor: 'white', alignSelf: 'center', height: 175, width: 340, marginTop: 30, shadowOffset: { width: 0, height: 1 }, shadowRadius: 2, elevation: 2, shadowOpacity: 0.4 }}
-            strokeColor={'black'}
-            strokeWidth={7}
-          />
-      <View style={styles.row}>
-      <Button onPress={() => undoDraw()} style={styles.sketchButton}><Text style={{ fontSize: 15, color: 'white' }}>Undo</Text></Button>
-      <Button onPress={() => delDraw()} style={styles.sketchButton}><Text style={{ fontSize: 15, color: 'white' }}>Delete</Text></Button>
-      </View>
+        <SafeAreaView>
+          <View style={styles.textInputStyle}>
+            <TextInput
+              value={result}
+              placeholder="Speak"
+              style={{ flex: 1, fontSize: 50 }}
+              onChangeText={text => setResult(text)}
+            />
+          </View>
+          <View style={styles.row}>
+            {isLoading ? <ActivityIndicator size="large" color="red" style={{ marginTop: 30 }} />
+
+              :
+              <TouchableOpacity
+                onPress={startRecording}
+              >
+                <FontAwesomeIcon icon={faMicrophone} size={40} color='green' style={{  marginTop: 30, alignSelf: 'center'  }} />
+              </TouchableOpacity>}
+
+
+            <TouchableOpacity
+              onPress={stopRecording}
+            >
+              <FontAwesomeIcon icon={faMicrophoneSlash} size={48} color='red' style={{  marginLeft: 30, marginTop: 28, alignSelf: 'center' }} />
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={{
+                alignSelf: 'center',
+                marginTop: 30,
+                marginLeft: 100,
+                width: 100,
+                backgroundColor: '#87ceeb',
+                padding: 12,
+                borderRadius: 4
+              }}
+              onPress={clearText}
+            >
+              <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 15, textAlign: 'center' }}>Clear</Text>
+            </TouchableOpacity>
+          </View>
+          <Button onPress={testSimilar} style={styles.testButton}><Text style={{ fontSize: 15 }}>Test</Text></Button>
            {/*Here we will return the view when state is true 
         and will return false if state is false*/}
         {num === 10 ? (
-          <Button onPress={() => navigation.navigate('Chinese')} style={styles.submitButton}><Text style={{ fontSize: 15, color: 'white', fontWeight: 'bold' }}>Submit</Text></Button>
+          <Button onPress={() => navigation.navigate('Function')} style={styles.submitButton}><Text style={{ fontSize: 15, color: 'white', fontWeight: 'bold' }}>Submit</Text></Button>
             ) : null}
-        </View>
+        </SafeAreaView>
+      </View>
     </ImageBackground>
   );
 };
@@ -125,7 +200,7 @@ const styles = StyleSheet.create({
   text: {
     textAlign: 'center',
     fontSize: 50,
-    lineHeight: 175,
+    lineHeight: 250,
   },
   numContainer: {
     justifyContent: 'center',
@@ -157,12 +232,12 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     alignSelf: 'center',
     width: 340,
-    height: 175,
+    height: 250,
     shadowOffset: { width: 0, height: 1 },
     shadowRadius: 2,
     elevation: 2,
-    shadowOpacity: 0.4,
-    marginTop: 100,
+    marginTop: 90,
+    shadowOpacity: 0.4
   },
   textInputStyle: {
     marginTop: 50,
@@ -200,13 +275,4 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     alignSelf: 'center',
   },
-  sketchButton: {
-    backgroundColor: 'purple',
-    width: 100,
-    marginTop: 20,
-    marginLeft: 50,
-    padding: 5,
-    borderRadius: 3,
-    alignSelf: 'center',
-  }
 });

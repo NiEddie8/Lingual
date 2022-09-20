@@ -2,17 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, ImageBackground, View, TouchableOpacity, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import CardFlip from 'react-native-card-flip';
-import { loadChinese } from '../../Database';
+import { loadChinese } from '../Database';
 import { Button } from 'react-native-paper';
 
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons/faArrowLeft'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons/faArrowRight'
 import { faVolumeHigh } from '@fortawesome/free-solid-svg-icons/faVolumeHigh'
-import { ChineseQuestion } from '../../model/Types';
+import { ChineseQuestion } from '../model/Types';
 import Tts from 'react-native-tts';
 
-export function ChineseFlashcardsScreen2() {
+export function FlashcardsScreen2() {
   const [num, setNum] = useState(1);
   const [question, setQuestion] = useState({} as ChineseQuestion);
   const [flipCard, setFlipCard] = useState(0);
@@ -63,7 +63,7 @@ export function ChineseFlashcardsScreen2() {
  
   return(
   <ImageBackground
-  source={require('../../images/purpleBackground.jpeg')}
+  source={require('../images/purpleBackground.jpeg')}
   style={styles.background}
   >
   <CardFlip style={styles.cardContainer} flipDirection='x' ref={(card) => this.card = card} >
@@ -91,7 +91,7 @@ export function ChineseFlashcardsScreen2() {
         {/*Here we will return the view when state is true 
         and will return false if state is false*/}
         {num === 10 ? (
-          <Button onPress={() => navigation.navigate('Chinese')} style={styles.submitButton}><Text style={{ fontSize: 15, color: 'white', fontWeight: 'bold' }}>Submit</Text></Button>
+          <Button onPress={() => navigation.navigate('Function')} style={styles.submitButton}><Text style={{ fontSize: 15, color: 'white', fontWeight: 'bold' }}>Submit</Text></Button>
             ) : null}
   </ImageBackground> 
 
