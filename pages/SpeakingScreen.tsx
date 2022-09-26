@@ -3,7 +3,7 @@ import { StyleSheet, SafeAreaView, TouchableOpacity, Image, View, Text, TextInpu
 import { useNavigation } from '@react-navigation/native';
 import Voice from '@react-native-community/voice';
 import { Button } from 'react-native-paper';
-import { loadChinese } from '../Database';
+import { loadChinese, loadTranslation } from '../Database';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons/faArrowLeft'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons/faArrowRight'
@@ -12,8 +12,11 @@ import { faMicrophoneSlash } from '@fortawesome/free-solid-svg-icons/faMicrophon
 import { ChineseQuestion } from '../model/Types';
 
 
-export function SpeakingScreen2() {
-  const [num, setNum] = useState(1);
+export function SpeakingScreen2({ navigation, route }) {
+  const setId = route.params.setId;
+  console.log('setId: ' + setId);
+
+  const [num, setNum] = useState(0);
   const [question, setQuestion] = useState({} as ChineseQuestion);
   const [result, setResult] = useState('')
   const [isLoading, setLoading] = useState(false)
@@ -21,12 +24,13 @@ export function SpeakingScreen2() {
   const [color, setColor] = useState('')
   const [text, setText] = useState('')
   const [called, setCalled] = useState(false)
+  const [length, setLength] = useState(0);
 
   useEffect(() => {
     const loadQuestion = async () => {
-      setCalled(false);
-      const question = await loadChinese(num);
-      setQuestion(question);
+      const question = await loadTranslation(setId);
+      setLength((await loadTranslation(setId)).length)
+      setQuestion(question[num]);
       console.log('Question: ', JSON.stringify(question));
     }
     loadQuestion();
@@ -35,21 +39,21 @@ export function SpeakingScreen2() {
   const incrementValue = async () => {
     clearText();
     setCalled(false);
-    if (num + 1 <= 10) {
-      setNum(num + 1);
+    if(num + 1 <= length - 1) {
+    setNum(num + 1);
     }
   }
 
-  const decrementValue = async () => {
+  const decrementValue = async() => {
     setCalled(false);
-    if (num - 1 >= 1) {
-      setNum(num - 1);
+    if(num - 1 >= 0) {
+    setNum(num - 1);
     }
   }
 
   const testSimilar = () => {
     setCalled(true);
-    if (result === question.ChineseCharacter) {
+    if (result === question.character) {
       setSimilar(true);
       setColor('green');
       setText('Correct! Move On To The Next Character');
@@ -109,8 +113,6 @@ export function SpeakingScreen2() {
     }
   }
 
-  const navigation = useNavigation();
-
   return (
     <ImageBackground
       source={require('../images/purpleBackground.jpeg')}
@@ -118,7 +120,7 @@ export function SpeakingScreen2() {
     >
       <View style={styles.container}>
         <View style={styles.cardContainer}>
-          <Text style={styles.text}>{question.ChineseCharacter}</Text>
+          <Text style={styles.text}>{question.character}</Text>
         </View>
         <View style={styles.row}>
           <TouchableOpacity
@@ -126,7 +128,7 @@ export function SpeakingScreen2() {
             <FontAwesomeIcon icon={faArrowLeft} size={25} style={{ alignSelf: 'center', marginTop: 8 }} />
           </TouchableOpacity>
           <View style={styles.numContainer}>
-            <Text style={{ fontSize: 13 }}>{num} / 10</Text>
+            <Text style={{ fontSize: 13 }}>{num + 1} / {length}</Text>
           </View>
           <TouchableOpacity
             style={styles.button2} onPress={incrementValue}>
@@ -183,8 +185,8 @@ export function SpeakingScreen2() {
           <Button onPress={testSimilar} style={styles.testButton}><Text style={{ fontSize: 15 }}>Test</Text></Button>
            {/*Here we will return the view when state is true 
         and will return false if state is false*/}
-        {num === 10 ? (
-          <Button onPress={() => navigation.navigate('Function')} style={styles.submitButton}><Text style={{ fontSize: 15, color: 'white', fontWeight: 'bold' }}>Submit</Text></Button>
+        {num === length - 1 ? (
+          <Button onPress={() => navigation.navigate('Function', {setId: setId})} style={styles.submitButton}><Text style={{ fontSize: 15, color: 'white', fontWeight: 'bold' }}>Submit</Text></Button>
             ) : null}
         </SafeAreaView>
       </View>

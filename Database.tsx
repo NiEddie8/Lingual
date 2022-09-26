@@ -10,7 +10,7 @@ const getDb = async (): Promise<SQLiteDatabase> => {
 export const loadChinese = async (id: number): Promise<any> => {
     const db = await getDb();
     const resultSet = await db.executeSql(
-        ' SELECT id, ChineseCharacter, EnglishTranslation ' +
+        ' SELECT id, character, translation ' +
         ' FROM Chinese ' + 
         ' WHERE id=? ',
         [id]);
@@ -61,17 +61,22 @@ export const createSet = async ( userSet: UserSet, translations: Translation[] )
     return newSet;
 };
 
-export const loadSet = async (id: number): Promise<any> => {
+export const loadTranslation = async (set_id: number): Promise<Translation[]> => {
     const db = await getDb();
     const resultSet = await db.executeSql(
-        ' SELECT id, name, language ' +
-        ' FROM user_set ' + 
-        ' WHERE id=? ',
-        [id]);
+        ' SELECT id, set_id, character, translation ' +
+        ' FROM translation ' + 
+        ' WHERE set_id=? ',
+        [set_id]);
     console.log('Result: ', JSON.stringify(resultSet));
+    const translations: Translation[] = [];
     if (resultSet.length > 0 && resultSet[0].rows.length > 0) {
-            return resultSet[0].rows.item(0) as UserSet;
+        for (let i = 0; i < resultSet[0].rows.length; i++) {
+            const item = resultSet[0].rows.item(i);
+            translations.push(item as Translation);
+        }
     }
+    return translations;
 };
 
 export const loadAllSets = async (): Promise<UserSet[]> => {

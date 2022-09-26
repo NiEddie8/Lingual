@@ -2,31 +2,35 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, ImageBackground, View, TouchableOpacity, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import CardFlip from 'react-native-card-flip';
-import { loadChinese } from '../Database';
+import { loadChinese, loadTranslation } from '../Database';
 import { Button } from 'react-native-paper';
 
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons/faArrowLeft'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons/faArrowRight'
 import { faVolumeHigh } from '@fortawesome/free-solid-svg-icons/faVolumeHigh'
-import { ChineseQuestion } from '../model/Types';
+import { Translation } from '../model/Types';
 import Tts from 'react-native-tts';
 
-export function FlashcardsScreen2() {
-  const [num, setNum] = useState(1);
-  const [question, setQuestion] = useState({} as ChineseQuestion);
+export function FlashcardsScreen2({ navigation, route }) {
+  const setId = route.params.setId;
+  console.log('setId: ' + setId);
+
+  const [num, setNum] = useState(0);
+  const [question, setQuestion] = useState({} as Translation);
   const [flipCard, setFlipCard] = useState(0);
+  const [length, setLength] = useState(0);
 
   const flipCard1 = () => {
     setFlipCard(1 - flipCard);
     this.card.flip();
   }
 
-  
   useEffect(() => {
     const loadQuestion = async () => {
-      const question = await loadChinese(num);
-      setQuestion(question);
+      const question = await loadTranslation(setId);
+      setLength((await loadTranslation(setId)).length)
+      setQuestion(question[num]);
       console.log('Question: ', JSON.stringify(question));
     }
     if(flipCard === 1) {
@@ -36,13 +40,13 @@ export function FlashcardsScreen2() {
   }, [num]);
 
     const incrementValue = async () => {
-      if(num + 1 <= 10) {
+      if(num + 1 <= length - 1) {
       setNum(num + 1);
       }
     }
 
     const decrementValue = async() => {
-      if(num - 1 >= 1) {
+      if(num - 1 >= 0) {
       setNum(num - 1);
       }
     }
@@ -52,14 +56,13 @@ export function FlashcardsScreen2() {
     if(flipCard === 0) {
       Tts.setDefaultLanguage('zh-CN');
       Tts.setDefaultVoice('com.apple.ttsbundle.Ting-Ting-compact');
-      Tts.speak(question.ChineseCharacter);
+      Tts.speak(question.character);
     } else {
       Tts.setDefaultLanguage('en-US');
       Tts.setDefaultVoice('com.apple.ttsbundle.Samantha-compact');
-      Tts.speak(question.EnglishTranslation);
+      Tts.speak(question.translation);
     }
   }
-  const navigation = useNavigation();
  
   return(
   <ImageBackground
@@ -68,9 +71,9 @@ export function FlashcardsScreen2() {
   >
   <CardFlip style={styles.cardContainer} flipDirection='x' ref={(card) => this.card = card} >
     <TouchableOpacity style={styles.card} onPress={() => flipCard1()} ><Text numberOfLines={1}
-    adjustsFontSizeToFit style={styles.text}>{question.ChineseCharacter}</Text></TouchableOpacity>
+    adjustsFontSizeToFit style={styles.text}>{question.character}</Text></TouchableOpacity>
     <TouchableOpacity style={styles.card} onPress={() => flipCard1()} ><Text numberOfLines={1}
-    adjustsFontSizeToFit style={styles.text}>{question.EnglishTranslation}</Text></TouchableOpacity>
+    adjustsFontSizeToFit style={styles.text}>{question.translation}</Text></TouchableOpacity>
   </CardFlip>
   <TouchableOpacity onPress={() => handleVoice()}>
   <FontAwesomeIcon icon={faVolumeHigh} size={37} style={{marginLeft: 240, marginTop: -290, alignSelf: 'center'}}color='black' />
@@ -81,7 +84,7 @@ export function FlashcardsScreen2() {
     <FontAwesomeIcon icon={ faArrowLeft } size={25} style={{alignSelf: 'center', marginTop: 17}}/>
   </TouchableOpacity>
   <View style={styles.numContainer}>
-  <Text style={{fontSize: 20}}>{num} / 10</Text>
+  <Text style={{fontSize: 20}}>{num + 1} / {length}</Text>
   </View>
   <TouchableOpacity
 	style={styles.button2} onPress={incrementValue}>
@@ -90,8 +93,8 @@ export function FlashcardsScreen2() {
   </View>
         {/*Here we will return the view when state is true 
         and will return false if state is false*/}
-        {num === 10 ? (
-          <Button onPress={() => navigation.navigate('Function')} style={styles.submitButton}><Text style={{ fontSize: 15, color: 'white', fontWeight: 'bold' }}>Submit</Text></Button>
+        {num === length - 1 ? (
+          <Button onPress={() => navigation.navigate('Function', {setId: setId})} style={styles.submitButton}><Text style={{ fontSize: 15, color: 'white', fontWeight: 'bold' }}>Submit</Text></Button>
             ) : null}
   </ImageBackground> 
 

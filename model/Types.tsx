@@ -1,11 +1,11 @@
 export class ChineseQuestion {
     id?: number;
-    ChineseCharacter: string;
-    EnglishTranslation: string;
+    character: string;
+    translation: string;
 
-    constructor(chineseCharacter: string, englishTranslation: string) {
-        this.ChineseCharacter = chineseCharacter;
-        this.EnglishTranslation = englishTranslation;
+    constructor(character: string, translation: string) {
+        this.character = character;
+        this.translation = translation;
     }
 }
 

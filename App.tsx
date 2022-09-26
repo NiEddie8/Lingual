@@ -107,16 +107,16 @@ function FunctionScreen({ navigation, route }) {
   return FunctionScreen2({navigation, route});
 }
 
-function FlashcardsScreen({ navigation }) {
-  return <FlashcardsScreen2/>;
+function FlashcardsScreen({ navigation, route }) {
+  return FlashcardsScreen2({ navigation, route });
 }
 
-function SpeakingScreen({ navigation }) {
-  return <SpeakingScreen2/>;
+function SpeakingScreen({ navigation, route }) {
+  return SpeakingScreen2({ navigation, route });
 }
 
-function WritingScreen({ navigation }) {
-  return <WritingScreen2/>;
+function WritingScreen({ navigation, route }) {
+  return WritingScreen2({ navigation, route });
 }
 
 export default function App() {

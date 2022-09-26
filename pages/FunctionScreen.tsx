@@ -12,21 +12,21 @@ export function FunctionScreen2({navigation, route}) {
     > 
       <TouchableOpacity
         style={styles.languageStyleFirst}
-        onPress={() => navigation.navigate('Flashcards')}
+        onPress={() => navigation.navigate('Flashcards', {setId: setId})}
       >
-        <Text>Flashcards</Text>
+        <Text style={{fontWeight: 'bold'}}>Flashcards</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.languageStyle}
-        onPress={() => navigation.navigate('Speaking')}
+        onPress={() => navigation.navigate('Speaking', {setId: setId})}
       >
-        <Text>Speaking</Text>
+        <Text style={{fontWeight: 'bold'}}>Speaking</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.languageStyle}
-        onPress={() => navigation.navigate('Writing')}
+        onPress={() => navigation.navigate('Writing', {setId: setId})}
       >
-        <Text>Writing</Text>
+        <Text style={{fontWeight: 'bold'}}>Writing</Text>
       </TouchableOpacity>
     </ImageBackground>
 

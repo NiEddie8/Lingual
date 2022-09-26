@@ -64,7 +64,7 @@ const LearnScreen2 = ({ navigation }) => {
         <ScrollView style={styles.scrollView}>
         <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 25, marginLeft:20, marginTop: 20 }}>Main Study Sets</Text>
           <TouchableOpacity
-            onPress={() => navigation.navigate('Function')}
+            onPress={() => navigation.navigate('Function', {setId: 5!})}
           >
             <Image
               style={styles.Chinese}
