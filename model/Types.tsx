@@ -1,14 +1,3 @@
-export class ChineseQuestion {
-    id?: number;
-    character: string;
-    translation: string;
-
-    constructor(character: string, translation: string) {
-        this.character = character;
-        this.translation = translation;
-    }
-}
-
 export class Translation {
     id?: number;
     setId?: number;

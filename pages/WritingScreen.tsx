@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { loadChinese, loadTranslation } from '../Database';
+import { loadTranslation } from '../Database';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faArrowLeft, unicode } from '@fortawesome/free-solid-svg-icons/faArrowLeft'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons/faArrowRight'
-import { ChineseQuestion } from '../model/Types';
+import { Translation } from '../model/Types';
 import { SketchCanvas } from '@terrylinla/react-native-sketch-canvas';
 import { Button } from 'react-native-paper';
 
@@ -15,28 +15,14 @@ export function WritingScreen2({ navigation, route }) {
   console.log('setId: ' + setId);
 
   const [num, setNum] = useState(0);
-  const [question, setQuestion] = useState({} as ChineseQuestion);
-  const [color, setColor] = useState('')
-  const [text, setText] = useState('')
-  const [called, setCalled] = useState(false)
+  const [question, setQuestion] = useState({} as Translation);
   const [length, setLength] = useState(0);
 
   const undoDraw = () => {
-    setCalled(false);
     this.sketch.undo();
   }
   const delDraw = () => {
-    setCalled(false);
     this.sketch.clear();
-  }
-
-  const chooseTranslation = async () => {
-    if(setId === 'Chinese') {
-      return loadChinese(num);
-    }
-    else {
-      return loadTranslation(num);
-    }
   }
 
   useEffect(() => {
@@ -50,14 +36,12 @@ export function WritingScreen2({ navigation, route }) {
   }, [num]);
 
   const incrementValue = async () => {
-    setCalled(false);
     if(num + 1 <= length - 1) {
     setNum(num + 1);
     }
   }
 
   const decrementValue = async() => {
-    setCalled(false);
     if(num - 1 >= 0) {
     setNum(num - 1);
     }
@@ -85,13 +69,6 @@ export function WritingScreen2({ navigation, route }) {
             <FontAwesomeIcon icon={faArrowRight} size={25} style={{ alignSelf: 'center', marginTop: 8 }} />
           </TouchableOpacity>
         </View>
-        {/*Here we will return the view when state is true 
-        and will return false if state is false*/}
-        { called === true ? (
-          <Text style={{ alignSelf: 'center', color: color, fontWeight: 'bold', marginTop: 7, marginBottom: -24 }}>{text}</Text>
-        ) :
-          null
-        }
       <SketchCanvas ref={(sketch) => this.sketch = sketch}
       style={{ backgroundColor: 'white', alignSelf: 'center', height: 175, width: 340, marginTop: 30, shadowOffset: { width: 0, height: 1 }, shadowRadius: 2, elevation: 2, shadowOpacity: 0.4 }}
             strokeColor={'black'}

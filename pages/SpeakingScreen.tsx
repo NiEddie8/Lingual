@@ -3,13 +3,15 @@ import { StyleSheet, SafeAreaView, TouchableOpacity, Image, View, Text, TextInpu
 import { useNavigation } from '@react-navigation/native';
 import Voice from '@react-native-community/voice';
 import { Button } from 'react-native-paper';
-import { loadChinese, loadTranslation } from '../Database';
+import { loadTranslation } from '../Database';
+import { Translation } from '../model/Types';
+
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons/faArrowLeft'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons/faArrowRight'
 import { faMicrophone } from '@fortawesome/free-solid-svg-icons/faMicrophone'
 import { faMicrophoneSlash } from '@fortawesome/free-solid-svg-icons/faMicrophoneSlash'
-import { ChineseQuestion } from '../model/Types';
+
 
 
 export function SpeakingScreen2({ navigation, route }) {
@@ -17,7 +19,7 @@ export function SpeakingScreen2({ navigation, route }) {
   console.log('setId: ' + setId);
 
   const [num, setNum] = useState(0);
-  const [question, setQuestion] = useState({} as ChineseQuestion);
+  const [question, setQuestion] = useState({} as Translation);
   const [result, setResult] = useState('')
   const [isLoading, setLoading] = useState(false)
   const [similar, setSimilar] = useState(false)

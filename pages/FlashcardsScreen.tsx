@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, ImageBackground, View, TouchableOpacity, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import CardFlip from 'react-native-card-flip';
-import { loadChinese, loadTranslation } from '../Database';
+import { loadTranslation } from '../Database';
+import { Translation } from '../model/Types';
 import { Button } from 'react-native-paper';
 
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons/faArrowLeft'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons/faArrowRight'
 import { faVolumeHigh } from '@fortawesome/free-solid-svg-icons/faVolumeHigh'
-import { Translation } from '../model/Types';
 import Tts from 'react-native-tts';
 
 export function FlashcardsScreen2({ navigation, route }) {
