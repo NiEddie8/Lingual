@@ -2,8 +2,9 @@ import React from 'react';
 import { StyleSheet, ImageBackground, Text, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-export function FunctionScreen2() {
-  const navigation = useNavigation();
+export function FunctionScreen2({navigation, route}) {
+  const setId = route.params.setId;
+  console.log('setId: ' + setId);
   return (
     <ImageBackground
       source={require('../images/purpleBackground.jpeg')}

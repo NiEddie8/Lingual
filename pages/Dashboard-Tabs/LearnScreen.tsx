@@ -78,7 +78,7 @@ const LearnScreen2 = ({ navigation }) => {
             renderItem={({ item }) =>
               <TouchableOpacity
                 style={styles.container}
-                onPress={() => navigation.navigate('Function')}
+                onPress={() => navigation.navigate('Function', {setId: item.id!})}
               >
                 <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 20, lineHeight: 150 }}>{item.name}</Text>
               </TouchableOpacity>

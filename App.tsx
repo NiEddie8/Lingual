@@ -19,7 +19,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faHome } from '@fortawesome/free-solid-svg-icons/faHome'
 import { faGraduationCap } from '@fortawesome/free-solid-svg-icons/faGraduationCap'
 import { faPlus } from '@fortawesome/free-solid-svg-icons/faPlus'
-import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 
 
@@ -104,8 +103,8 @@ function CreateScreen({ navigation }) {
 }
 
 
-function FunctionScreen({ navigation }) {
-  return <FunctionScreen2/>;
+function FunctionScreen({ navigation, route }) {
+  return FunctionScreen2({navigation, route});
 }
 
 function FlashcardsScreen({ navigation }) {
