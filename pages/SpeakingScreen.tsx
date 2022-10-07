@@ -96,11 +96,19 @@ export function SpeakingScreen2({ navigation, route }) {
     console.log("speech result handler", e)
   }
 
+  const setLanguage = () => {
+    if(setId === 5) {
+      return 'zh-CN';
+    } else if(setId === 6) {
+      return 'es-ES';
+    }
+  }
+
   const startRecording = async () => {
     setCalled(false);
     setLoading(true)
     try {
-      await Voice.start('zh-CN')
+      await Voice.start(setLanguage())
     } catch (error) {
       console.log("error raised", error)
     }

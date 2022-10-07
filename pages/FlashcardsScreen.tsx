@@ -51,11 +51,20 @@ export function FlashcardsScreen2({ navigation, route }) {
       }
     }
 
+    const setLanguage = () => {
+      if(setId === 5) {
+        Tts.setDefaultLanguage('zh-CN');
+        Tts.setDefaultVoice('com.apple.ttsbundle.Ting-Ting-compact');
+      } else if(setId === 6) {
+        Tts.setDefaultLanguage('es-ES');
+        Tts.setDefaultVoice('com.apple.ttsbundle.Monica-compact');
+      }
+    }
+
   const handleVoice = () => {
-    Tts.setDefaultRate(0.1);
+    Tts.setDefaultRate(0.3);
     if(flipCard === 0) {
-      Tts.setDefaultLanguage('zh-CN');
-      Tts.setDefaultVoice('com.apple.ttsbundle.Ting-Ting-compact');
+      setLanguage();
       Tts.speak(question.character);
     } else {
       Tts.setDefaultLanguage('en-US');

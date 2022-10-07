@@ -72,6 +72,15 @@ const LearnScreen2 = ({ navigation }) => {
             >
             </Image>
           </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('Function', {setId: 6!})}
+          >
+            <Image
+              style={styles.Chinese}
+              source={require('../../images/spain.png')}
+            >
+            </Image>
+          </TouchableOpacity>
           <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 25, marginLeft:20, marginTop: 70 }}>User Created Study Sets</Text>
           <FlatList
             data={items}
