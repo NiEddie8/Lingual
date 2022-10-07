@@ -9,6 +9,7 @@ import { HomeScreen2 } from './pages/Login-Register/HomeScreen';
 import { RegisterScreen2 } from './pages/Login-Register/RegisterScreen';
 import DashboardScreen2 from './pages/Dashboard-Tabs/DashboardScreen';
 import LearnScreen2 from './pages/Dashboard-Tabs/LearnScreen';
+import CameraScreen2 from './pages/Dashboard-Tabs/CameraScreen';
 import { FunctionScreen2 } from './pages/FunctionScreen';
 import { FlashcardsScreen2 } from './pages/FlashcardsScreen';
 import { SpeakingScreen2 } from './pages/SpeakingScreen';
@@ -19,6 +20,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faHome } from '@fortawesome/free-solid-svg-icons/faHome'
 import { faGraduationCap } from '@fortawesome/free-solid-svg-icons/faGraduationCap'
 import { faPlus } from '@fortawesome/free-solid-svg-icons/faPlus'
+import { faCamera } from '@fortawesome/free-solid-svg-icons/faCamera'
 
 
 
@@ -85,6 +87,16 @@ function DashboardTabScreen({ navigation }) {
           ),
         }}
       />
+        <Tab.Screen
+          name="Camera"
+          component={CameraScreen}
+          options={{
+            tabBarLabel: 'Camera',
+            tabBarIcon: ({color}) => (
+              <FontAwesomeIcon icon={ faCamera } color={color} size={25} style={{marginTop:10}}/>
+            ),
+          }}
+        />
     </Tab.Navigator>
 
   );
@@ -100,6 +112,10 @@ function LearnScreen({ navigation }) {
 
 function CreateScreen({ navigation }) {
   return CreateScreen2({navigation});
+}
+
+function CameraScreen({ navigation }) {
+  return CameraScreen2({navigation});
 }
 
 
