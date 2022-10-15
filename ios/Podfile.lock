@@ -272,11 +272,15 @@ PODS:
   - React-jsinspector (0.67.4)
   - React-logger (0.67.4):
     - glog
+  - react-native-image-picker (4.10.0):
+    - React-Core
   - react-native-pager-view (5.4.25):
     - React-Core
   - react-native-safe-area-context (3.4.1):
     - React-Core
   - react-native-sqlite-storage (6.0.1):
+    - React-Core
+  - react-native-text-recognition (1.0.0):
     - React-Core
   - react-native-voice (1.1.9):
     - React
@@ -449,9 +453,11 @@ DEPENDENCIES:
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
+  - react-native-image-picker (from `../node_modules/react-native-image-picker`)
   - react-native-pager-view (from `../node_modules/react-native-pager-view`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - react-native-sqlite-storage (from `../node_modules/react-native-sqlite-storage`)
+  - react-native-text-recognition (from `../node_modules/react-native-text-recognition`)
   - "react-native-voice (from `../node_modules/@react-native-community/voice`)"
   - react-native-webview (from `../node_modules/react-native-webview`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
@@ -531,12 +537,16 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
   React-logger:
     :path: "../node_modules/react-native/ReactCommon/logger"
+  react-native-image-picker:
+    :path: "../node_modules/react-native-image-picker"
   react-native-pager-view:
     :path: "../node_modules/react-native-pager-view"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
   react-native-sqlite-storage:
     :path: "../node_modules/react-native-sqlite-storage"
+  react-native-text-recognition:
+    :path: "../node_modules/react-native-text-recognition"
   react-native-voice:
     :path: "../node_modules/@react-native-community/voice"
   react-native-webview:
@@ -619,9 +629,11 @@ SPEC CHECKSUMS:
   React-jsiexecutor: cbdf37cebdc4f5d8b3d0bf5ccaa6147fd9de9f3d
   React-jsinspector: f4775ea9118cbe1f72b834f0f842baa7a99508d8
   React-logger: a1f028f6d8639a3f364ef80419e5e862e1115250
+  react-native-image-picker: 35834940bc572ba914707c39b60e043a06f88178
   react-native-pager-view: fc311e95f8ba2b710deae6cb0a21f2102fb49d99
   react-native-safe-area-context: 5b8a418400eb3d8364aa87300e865c0262cc17b9
   react-native-sqlite-storage: 6df009b8b67fe34c57c5fd06ee8fff7669fece6d
+  react-native-text-recognition: 8677daa77284109566b887a6fff30da7af07f10d
   react-native-voice: 0355d771838b00acfb4b112b2c496c2653e2f8c8
   react-native-webview: c09ea739796b91286ae1f581d2db536b48c33911
   React-perflogger: 0afaf2f01a47fd0fc368a93bfbb5bd3b26db6e7f
@@ -650,6 +662,6 @@ SPEC CHECKSUMS:
   Yoga: d6b6a80659aa3e91aaba01d0012e7edcbedcbecd
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: a13f2ae1e0ec42ab3283989f4229c86ae2be9162
+PODFILE CHECKSUM: 6f87c4ba1347884cd9deed079cbcd77fdd8a16bb
 
 COCOAPODS: 1.11.2
