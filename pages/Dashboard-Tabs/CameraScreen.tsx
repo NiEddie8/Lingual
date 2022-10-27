@@ -3,11 +3,25 @@ import { ImageBackground, SafeAreaView, StyleSheet, Text, TouchableOpacity, View
 import { launchImageLibrary, launchCamera } from 'react-native-image-picker';
 import TextRecognition from 'react-native-text-recognition';
 import { Button } from 'react-native-paper';
+import SelectList from 'react-native-dropdown-select-list'
+import { Colors } from 'react-native/Libraries/NewAppScreen';
+
 
 const CameraScreen2 = ({ navigation }) => {
     const [image, setImage] = useState(null)
     const [text, setText] = useState(null)
     const [translation, setTranslation] = useState("")
+
+    const [selected, setSelected] = React.useState("");
+  
+  const data = [
+    {key:'1',value:'Select Language'},
+    {key:'2',value:'Chinese'},
+    {key:'3',value:'Japanese'},
+    {key:'4',value:'Spanish'},
+    {key:'5',value:'French'},
+    {key:'6',value:'Korean'},
+  ];
     
     useEffect(() => {
         (async () => {
@@ -38,12 +52,24 @@ const CameraScreen2 = ({ navigation }) => {
                         <Text style={styles.touchableOpacityLink}>Take a Photo</Text>
                     </TouchableOpacity>
                 </View>
+               
                 <View style={styles.cardContainer}>
-                    <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold', marginLeft: 5}}>{text ? text : ''}</Text>
+                    <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold', marginLeft: 10}}>{text ? text : ''}</Text>
+                </View>
+                <View style={{flexDirection: 'row'}}>
+                <View style={styles.submitButton}>
+                <SelectList 
+                    setSelected={setSelected} 
+                    data={data}  
+                    search={false}
+                    boxStyles={{borderRadius:0}} 
+                    defaultOption={{ key:'1', value:'Select Language' }}   //default selected option
+                />
                 </View>
                 <Button onPress={() => setTranslation("你好")} style={styles.submitButton}><Text style={{ fontSize: 15, color: 'white', fontWeight: 'bold' }}>Translate</Text></Button>
+                </View>
                 <View style={styles.cardContainer}>
-                    <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold', marginLeft: 5}}>{translation}</Text>
+                    <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold', marginLeft: 10}}>{translation}</Text>
                 </View>
         </ImageBackground>
     );
@@ -52,8 +78,8 @@ const CameraScreen2 = ({ navigation }) => {
 const styles = StyleSheet.create({
     submitButton: {
         backgroundColor: '#87ceeb',
-        width: 300,
         marginTop: 40,
+        marginLeft: 35,
         padding: 5,
         borderRadius: 3,
         alignSelf: 'center',
