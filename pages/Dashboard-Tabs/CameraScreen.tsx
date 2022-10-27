@@ -4,7 +4,6 @@ import { launchImageLibrary, launchCamera } from 'react-native-image-picker';
 import TextRecognition from 'react-native-text-recognition';
 import { Button } from 'react-native-paper';
 import SelectList from 'react-native-dropdown-select-list'
-import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 
 const CameraScreen2 = ({ navigation }) => {
