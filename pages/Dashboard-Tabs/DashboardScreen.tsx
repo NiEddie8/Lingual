@@ -24,6 +24,7 @@ import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons/faRightFro
         },
         normalText: {
             fontSize: 16,
+            fontWeight: 'bold',
             lineHeight: 26,
             color: 'white',
             textAlign: 'center',
@@ -49,7 +50,7 @@ import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons/faRightFro
                 <Text style={styles.header}>Lingual</Text>
 
                 <Text style={styles.normalText}>
-                The best platform to learn a new language!
+                Personalized Language Learning App Designed to Meet YOUR Needs
                 </Text>
             </ImageBackground>
         );

@@ -19,7 +19,7 @@ export function HomeScreen2() {
         <Text style={styles.header}>Lingual</Text>
 
         <Text style={styles.normalText}>
-        The best platform to learn a new language!
+        Personalized Language Learning App Designed to Meet YOUR Needs
         </Text>
         <Button style={styles.button} mode="contained" buttonColor='white' textColor='black' onPress={() => navigation.navigate('Login')} >
             Login
@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
     },
     normalText: {
         fontSize: 16,
+        fontWeight: 'bold',
         lineHeight: 26,
         color: 'white',
         textAlign: 'center',
