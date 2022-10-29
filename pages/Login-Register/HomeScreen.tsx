@@ -19,7 +19,7 @@ export function HomeScreen2() {
         <Text style={styles.header}>Lingual</Text>
 
         <Text style={styles.normalText}>
-        Personalized Language Learning App
+        The Best Platform to Learn a New Language
         </Text>
         <Button style={styles.button} mode="contained" buttonColor='white' textColor='black' onPress={() => navigation.navigate('Login')} >
             Login

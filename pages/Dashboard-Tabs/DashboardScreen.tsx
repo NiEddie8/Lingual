@@ -50,7 +50,7 @@ import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons/faRightFro
                 <Text style={styles.header}>Lingual</Text>
 
                 <Text style={styles.normalText}>
-                Personalized Language Learning App
+                The Best Platform to Learn a New Language
                 </Text>
             </ImageBackground>
         );
