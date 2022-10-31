@@ -53,7 +53,7 @@ const CameraScreen2 = ({ navigation }) => {
                 </View>
                
                 <View style={styles.cardContainer}>
-                    <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold', marginLeft: 10}}>{text ? text : ''}</Text>
+                    <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold', marginLeft: 10, marginTop: 10,}}>{text ? text : ''}</Text>
                 </View>
                 <View style={{flexDirection: 'row'}}>
                 <View style={styles.submitButton}>
@@ -68,7 +68,7 @@ const CameraScreen2 = ({ navigation }) => {
                 <Button onPress={() => setTranslation("你好")} style={styles.submitButton}><Text style={{ fontSize: 15, color: 'white', fontWeight: 'bold' }}>Translate</Text></Button>
                 </View>
                 <View style={styles.cardContainer}>
-                    <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold', marginLeft: 10}}>{translation}</Text>
+                    <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold', marginLeft: 10, marginTop: 10,}}>{translation}</Text>
                 </View>
         </ImageBackground>
     );

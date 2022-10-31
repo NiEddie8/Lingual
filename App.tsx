@@ -22,8 +22,9 @@ import { faGraduationCap } from '@fortawesome/free-solid-svg-icons/faGraduationC
 import { faPlus } from '@fortawesome/free-solid-svg-icons/faPlus'
 import { faCamera } from '@fortawesome/free-solid-svg-icons/faCamera'
 
+import {LogBox} from 'react-native';
 
-
+LogBox.ignoreAllLogs();
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
